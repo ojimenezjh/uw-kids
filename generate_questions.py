@@ -44,9 +44,9 @@ def generate_questions(subject, difficulty, max_difficulty, number_questions):
 			2. You must only provide the generated JSON array and nothing else, you don't need to explain it.
 			3. It must be in JSON array format to be inserted into a MongoDB.
 			4. You must write the content of each JSON tag in Spanish. Do not translate the keys, only the values of the JSON.
-			5. You must generate {number_questions} questions.
-			6. You must generate questions with a difficulty of {difficulty}/{max_difficulty}.
-			7. Make sure each question is unique and does not repeat any of the previous questions.
+			5. You must generate questions with a difficulty of {difficulty}/{max_difficulty}.
+			6. Make sure each question is unique and does not repeat any of the previous questions.
+			7. You must generate {number_questions} questions.
 		"""
 		
 		prompt_temp_sistema = PromptTemplate(
