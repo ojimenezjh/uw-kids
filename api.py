@@ -9,9 +9,8 @@ CORS(app)
 
 def clean_json_response(response_text):
     # Extract the JSON array from the response
-    match = re.search(r'\[.*\]', response_text, re.DOTALL)
+    match = re.search(r'\[\s*{.*?}\s*\]', response_text, re.DOTALL)
     if match:
-        print(match.group(0), 'lul')
         return match.group(0)
     else:
         raise ValueError("No valid JSON array found")
@@ -39,7 +38,7 @@ def generate_question():
     difficulty = data.get('difficulty')
     max_difficulty = data.get('maxDifficulty')
     number_questions = data.get('numberQuestions')
-    max_attempts = 3
+    max_attempts = 5
     attempt = 0
     
     while attempt < max_attempts:
