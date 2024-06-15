@@ -1,0 +1,87 @@
+/* Configuración inicial de CSS */
+@font-face {
+    font-family: MinecraftiaRegular;
+    src: url("./assets/Minecraftia.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.dg.ac {
+    z-index: 10000 !important;
+    /* Asegura que `dat.GUI` esté en la parte superior */
+    pointer-events: auto !important;
+    /* Asegura que sea interactivo */
+}
+
+html,
+body {
+    user-select: none;
+    overflow: hidden;
+    background-image: url("./assets/setup.webp");
+}
+
+#title-container {
+    width: 100vw;
+    height: 250px;
+    background: url('./assets/uwkids.webp') no-repeat center center;
+    background-size: contain;
+    margin-top: 20px;
+}
+
+#game-setup {
+    font-family: MinecraftiaRegular;
+    color: aliceblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("./assets/mc_background.jpg");
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+#setup-form {
+    font-family: MinecraftiaRegular;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+}
+
+#setup-form label {
+    margin: 10px 0 5px;
+}
+
+#setup-form select,
+#setup-form input {
+    font-family: MinecraftiaRegular;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.music-toggle {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Otros estilos existentes */
+#root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+/* Rest of the CSS */

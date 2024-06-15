@@ -1,0 +1,312 @@
+@font-face {
+    font-family: MinecraftiaRegular;
+    src: url("./assets/Minecraftia.ttf");
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.dg.ac {
+    z-index: 10000 !important; /* Asegura que `dat.GUI` esté en la parte superior */
+    pointer-events: auto !important; /* Asegura que sea interactivo */
+}
+
+
+html,
+body
+{
+    user-select: none; 
+    overflow: hidden;
+}
+
+#root
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+.music-toggle {
+    width: 40px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#game{
+    visibility: hidden;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'MinecraftiaRegular';
+    font-weight: normal;
+    font-style: normal;
+}
+#board-div{
+    width: 90vw;
+    height: 40vh;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+    --s: 60px;
+    --g :5px;  
+    
+    width: calc(3*(1.353*var(--s) + var(--g)));
+    display: grid;
+    justify-items: end;
+    aspect-ratio: 3;
+    overflow: hidden;
+    --_m: linear-gradient(90deg,#0000,#000 15px calc(100% - 15px),#0000);
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+  }
+  .loader:before { 
+    content: "";
+    width: 200%;
+    background:
+      linear-gradient(90deg,#ff1818 50%,#0000 0),
+      conic-gradient(from -90deg at var(--s) calc(0.353*var(--s)),
+        #fff 135deg,#666 0 270deg,#aaa 0); 
+    background-blend-mode: multiply;
+    --_m:
+      linear-gradient(to bottom right,
+         #0000 calc(0.25*var(--s)),#000 0 calc(100% - calc(0.25*var(--s)) - 1.414*var(--g)),#0000 0),
+      conic-gradient(from -90deg at right var(--g) bottom var(--g),#000 90deg,#0000 0);
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    background-size:   calc(100%/3) 100%, calc(100%/6) 100%;
+    -webkit-mask-size: calc(100%/6) 100%;
+            mask-size: calc(100%/6) 100%;
+    -webkit-mask-composite: source-in;
+            mask-composite: intersect;
+    animation: l10 1s infinite linear;
+  }
+  @keyframes l10 {
+    to {transform:translate(calc(100%/3))}
+  }
+
+#loading-screen{
+    visibility: visible;
+    opacity: 1;
+    transition: 1s;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #363541;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'MinecraftiaRegular';
+    font-weight: normal;
+    font-style: normal;
+    color: ghostwhite;
+    font-size: 30px;
+    z-index: 2;
+}
+#loading-screen p{
+    position: absolute;
+    margin-top: 65vh;
+}
+#finish-screen, #game-over-screen, #end-screen {
+    visibility: hidden;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    background-image: url("./assets/setup.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 2;
+}
+
+#finish-screen > div, #game-over-screen > div, #end-screen > div{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#finish-screen-text, #game-over-screen-text, #end-screen-text{
+    font-size: 30px;
+    font-family: 'MinecraftiaRegular';
+    font-weight: normal;
+    font-style: normal;
+    color: ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#points-counter{
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 200px;
+    opacity: 0.9;
+    background-color: black;
+    border-bottom-left-radius:10px;
+    font-family: 'MinecraftiaRegular';
+    font-weight: normal;
+    font-style: normal;
+    color: ghostwhite;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+#points-counter > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#points, #levels{
+    font-size: 30px;
+}
+#question-container{
+    bottom: 5vh;
+    width: 60vw;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("./assets/grass.png");
+}
+
+.button-continue {
+    margin-top: 20px;
+}
+
+#question-div{
+    width: 58vw;
+    height: 12vh;
+    color: ghostwhite;
+    font-size: medium;
+    background-image: url("./assets/mc_background.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#question{
+    padding: 50px;
+}
+#progress-container {
+    position: absolute;
+    top: 20px;
+    width: 50vw;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #000;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #4caf50;
+    transition: width 0.5s ease;
+}
+#answers-div {
+    bottom: 5vh;
+    width: 60vw;
+    margin-top: 10px;
+    height: auto; /* Cambiar la altura para que se ajuste automáticamente */
+    color: ghostwhite;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Asegura que todos los hijos tengan la misma altura */
+    justify-content: space-around; /* Cambiado de center a space-around para mejor distribución */
+}
+
+.answer {
+    flex: 1 1 45%; /* Permite que los contenedores se ajusten al 45% del contenedor padre */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    min-height: 7vh; /* Establecer una altura mínima */
+    width: 45%; /* Ajuste del ancho para que se distribuyan en dos columnas */
+    margin: 5px; /* Ajustar el margen para un mejor espaciado */
+    background-image: url("./assets/button.png");
+    background-size: cover;
+    border-bottom: 5px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px; /* Añadir padding para manejar mejor el texto */
+    box-sizing: border-box; /* Asegura que el padding no rompa el diseño */
+    text-align: center; /* Centra el texto */
+    word-wrap: break-word; /* Permite que las palabras largas se dividan */
+}
+
+#answers-div .answer > p {
+    margin: 0;
+    padding: 0;
+}
+
+#lives-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.life {
+    width: 30px;
+    height: 30px;
+    background-image: url('./assets/heart.png'); /* Asegúrate de tener una imagen de corazón en esta ruta */
+    background-size: cover;
+    margin: 0 5px;
+}
+
+
+.control-pad {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+.control-btn {
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.control-btn.up, .control-btn.down {
+    margin-left: 35px; 
+}
+
+@media (max-width: 768px) {
+    .control-pad {
+        display: block;
+    }
+}

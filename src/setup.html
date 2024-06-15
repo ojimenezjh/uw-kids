@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <link rel="stylesheet" href="setup.css">
+</head>
+<body>
+    <div id="title-container">
+    </div>
+    <div id="game-setup">
+        <form id="setup-form">
+            <label for="game-mode">Temática del juego:</label>
+            <input type="textarea" id="game-mode" name="game-mode" placeholder="Ejemplo: Química de secundaria" maxlength="50" required>
+            <label for="game-level">Nivel de dificultad 1-10:</label>
+            <input type="number" id="game-level" name="game-level" min="1" max="10" value="1" required>
+            <button class="button-continue" role="button" type="submit">
+                <div class="button-continue-top text">¡Comienza el juego!</div>
+                <div class="button-continue-bottom"></div>
+                <div class="button-continue-base"></div>
+              </button>
+        </form>
+    </div>
+    <img id="toggle-music" class="music-toggle" src="../assets/soundOnBlack.png" alt="Toggle Music">
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+
+<body>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (!params.has('mode') || !params.has('level')) {
+            window.location.href = 'setup.html';
+        }
+    </script>
+    <div id="root"></div>
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>Generando nivel personalizado...</p>
+    </div>
+    <div id="points-counter">
+        <div>
+            <p>Points:</p>
+            <div id="points">0</div>
+        </div>
+        <div>
+            <p>Level:</p>
+            <div id="levels">0</div>
+        </div>
+    </div>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div> 
+    <div id="game">
+        <div id="board-div">
+        </div>
+        <div id="question-container">
+            <div id="question-div">
+                <p id="question"></p>
+            </div>
+        </div>
+        <div id="answers-div">
+
+        </div>
+
+        
+    </div>
+    <div class="control-pad">
+        <button class="control-btn up">↑</button>
+        <div class="horizontal-controls">
+            <button class="control-btn left">←</button>
+            <button class="control-btn right">→</button>
+        </div>
+        <button class="control-btn down">↓</button>
+    </div>
+    
+    <div id="finish-screen">
+        <div id="finish-screen-text">
+            <p>¡Felicidades!</p>
+            <p>Has completado el nivel</p>
+            <p>Le añadiremos algo más de dificultad</p>
+            <p>¿Estás preparado?</p>
+            <button id="continue" class="button-continue" role="button" type="button">
+                <div class="button-continue-top text">Continuar</div>
+                <div class="button-continue-bottom"></div>
+                <div class="button-continue-base"></div>
+              </button>
+        </div>
+    </div>
+    <div id="game-over-screen">
+        <div id="game-over-screen-text">
+            <p>Game Over</p>
+            <p>Has perdido todas tus vidas</p>
+            <button id="retry" class="button-continue" role="button" type="button">
+                <div class="button-continue-top text">Intentarlo de nuevo</div>
+                <div class="button-continue-bottom"></div>
+                <div class="button-continue-base"></div>
+            </button>
+        </div>
+    </div>
+    <div id="end-screen">
+        <div id="end-screen-text">
+            <p>¡Felicidades!</p>
+            <p>¡Has completado el juego!</p>
+            <div id="end-stats"></div>
+            <button id="restart" class="button-continue" role="button" type="button">
+                <div class="button-continue-top text">Volver a jugar</div>
+                <div class="button-continue-bottom"></div>
+                <div class="button-continue-base"></div>
+              </button>
+        </div>
+    </div>
+    <div id="lives-container"></div> 
+    <img id="toggle-music" class="music-toggle" src="../assets/soundOnBlack.png" alt="Toggle Music">
+</body>
+
+</html>
