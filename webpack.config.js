@@ -39,13 +39,13 @@ module.exports = (env, argv) => {
                 filename: 'index.html',
                 template: './src/index.html',
                 chunks: ['main'],
-                title: "Webpack Test",
+                title: "UW Kids",
             }),
             new HtmlWebpackPlugin({
                 filename: 'setup.html',
                 template: './src/setup.html',
                 chunks: ['setup'],
-                title: "Game Setup",
+                title: "UW Kids Setup",
             }),
             new Dotenv()
         ],
