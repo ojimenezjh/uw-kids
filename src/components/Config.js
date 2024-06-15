@@ -13,5 +13,4 @@ export default {
         3: 'pirateBoss',
         4: 'kraken'
     },
-    urlApi: 'http://127.0.0.1:5000'
 }
