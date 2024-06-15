@@ -20,7 +20,7 @@ export async function getQuestions(level, gameMode, gameLevel, totalLevels) {
     console.log("Calculated difficulty for current level:", difficulty, "/", maxDifficulty);
     console.log("Fetching questions for level:", level);
 
-        const response = await fetch(apiUrl + '/generate-questions', {
+        const response = await fetch(`${apiUrl}/generate-questions`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
