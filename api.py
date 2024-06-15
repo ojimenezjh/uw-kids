@@ -5,7 +5,7 @@ import re
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": ["https://uw-kids.vercel.app"]}})
 
 def clean_json_response(response_text):
     # Extract the JSON array from the response
