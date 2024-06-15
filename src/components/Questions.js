@@ -1,5 +1,6 @@
 import MusicManager from './MusicManager';
 import Config from './Config';
+const apiUrl = process.env.API_URL;
 
 let questionsArray = [];
 export let lives = Config.initialLives;
@@ -19,7 +20,7 @@ export async function getQuestions(level, gameMode, gameLevel, totalLevels) {
     console.log("Calculated difficulty for current level:", difficulty, "/", maxDifficulty);
     console.log("Fetching questions for level:", level);
 
-        const response = await fetch(Config.urlApi + '/generate-questions', {
+        const response = await fetch(apiUrl + '/generate-questions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
