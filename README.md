@@ -16,6 +16,7 @@ Este proyecto está dividido en dos partes principales:
   - [Demo](#demo)
   - [Cómo Jugar](#cómo-jugar)
   - [Características](#características)
+  - [Próximos Pasos](#próximos-pasos)
   - [Tecnologías Utilizadas](#tecnologías-utilizadas)
     - [Backend](#backend)
     - [Frontend](#frontend)
@@ -68,16 +69,27 @@ Puedes ver una demo del juego [aquí](https://uw-kids.vercel.app).
 - Sistema de vidas y progreso.
 - Interfaz amigable.
 
+## Próximos Pasos
+
+1. **Mejora de Rendimiento:** Realizar ajustes y optimizaciones para asegurar que el juego funcione sin problemas en una amplia variedad de dispositivos y navegadores.
+
+2. **Creación Automática de Mapas Según la Temática:** Implementar un sistema que genere mapas automáticamente basados en la temática seleccionada por el jugador.
+
+3. **Uso de Base de Datos para Optimizar Procesos:** Integrar una base de datos para almacenar y gestionar datos del juego de manera eficiente, mejorando el rendimiento y la escalabilidad.
+
+4. **Multijugador o Leaderboard:** Desarrollar funcionalidades de multijugador o tablas de clasificación para fomentar la competencia y la interacción entre los jugadores.
+
+5. **Mejorar las Animaciones y los Sonidos:** Incorporar gráficos y animaciones más avanzadas, así como mejorar los efectos de sonido para una experiencia de juego más inmersiva.
+
+6. **Posibilidad de Niveles Infinitos:** Añadir la opción de jugar en un modo de niveles infinitos, donde la dificultad aumenta continuamente y el objetivo es llegar lo más lejos posible.
+
 ## Tecnologías Utilizadas
 
 ### Backend
 
 - Python
 - Flask
-- flask_cors
-- gunicorn
-- openai
-- python-dotenv
+- OpenAI API
 - langchain
 
 ### Frontend
@@ -85,9 +97,6 @@ Puedes ver una demo del juego [aquí](https://uw-kids.vercel.app).
 - JavaScript
 - Three.js
 - Webpack
-- GSAP (GreenSock Animation Platform)
-- dotenv
-- dat.gui
 
 ## Instalación
 
