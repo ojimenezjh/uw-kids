@@ -31,7 +31,7 @@ def validate_question_structure(question):
         return False
     return True
 
-@app.route('/generate-questions', methods=['POST', 'OPTIONS'])
+@app.route('/generate-questions', methods=['POST'])
 def generate_question():
     data = request.json
     subject = data.get('subject')
