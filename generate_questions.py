@@ -60,9 +60,9 @@ def generate_questions(subject, difficulty, max_difficulty, number_questions):
 		chat_promt_value = chat_prompt.format_prompt(subject=subject, difficulty=difficulty, max_difficulty=max_difficulty, number_questions=number_questions).to_messages()
 		chat_resp = llm_openai(chat_promt_value)
 
-		print(chat_resp.content)
+		#print(chat_resp.content)
 
-		return json.loads(chat_resp.content)
+		return chat_resp.content
 
 	except Exception as e:
 		print(f"Error occurred: {e}")
