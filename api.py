@@ -5,13 +5,13 @@ import re
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/generate-questions": {"origins": "https://uw-kids.vercel.app"}})
 
 def clean_json_response(response_text):
     # Extract the JSON array from the response
-    match = re.search(r'\[\s*{.*?}\s*\]', response_text, re.DOTALL)
+    match = re.search(r'(\[\s*{.*?}\s*\])', response_text, re.DOTALL)
     if match:
-        return match.group(0)
+        return match.group(1)
     else:
         raise ValueError("No valid JSON array found")
 
@@ -44,18 +44,15 @@ def generate_question():
     while attempt < max_attempts:
         questions = generate_questions(subject, difficulty, max_difficulty, number_questions)
         
-        # Make sure the response is a valid JSON array
-        if isinstance(questions, list) and len(questions) == number_questions and all(validate_question_structure(q) for q in questions):
-            return jsonify(questions), 200
-        else:
-            try:
-                cleaned_response = clean_json_response(questions)
-                print(cleaned_response)
-                questions = json.loads(cleaned_response)
-                if isinstance(questions, list) and len(questions) == number_questions and all(validate_question_structure(q) for q in questions):
-                    return jsonify(questions), 200
-            except (ValueError, TypeError) as e:
-                attempt += 1
+        try:
+            cleaned_response = clean_json_response(questions)
+            print(cleaned_response)
+            questions = json.loads(cleaned_response)
+            
+            if isinstance(questions, list) and len(questions) == number_questions and all(validate_question_structure(q) for q in questions):
+                return jsonify(questions), 200
+        except (ValueError, TypeError) as e:
+            attempt += 1
 
     return jsonify({"error": "Failed to generate valid questions after multiple attempts"}), 500
 
